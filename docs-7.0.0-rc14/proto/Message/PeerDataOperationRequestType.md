@@ -1,0 +1,20 @@
+# proto.Message.PeerDataOperationRequestType
+
+> Baileys **v7** reference — package version `7.0.0-rc14` (npm `latest`). Not valid for v6 or v8.
+
+Protobuf enum
+
+## Enumeration Members
+
+- `COMPANION_CANONICAL_USER_NONCE_FETCH: 9`
+- `COMPANION_META_NONCE_FETCH: 7`
+- `COMPANION_SYNCD_SNAPSHOT_FATAL_RECOVERY: 8`
+- `FULL_HISTORY_SYNC_ON_DEMAND: 6`
+- `GALAXY_FLOW_ACTION: 11`
+- `GENERATE_LINK_PREVIEW: 2`
+- `HISTORY_SYNC_CHUNK_RETRY: 10`
+- `HISTORY_SYNC_ON_DEMAND: 3`
+- `PLACEHOLDER_MESSAGE_RESEND: 4`
+- `SEND_RECENT_STICKER_BOOTSTRAP: 1`
+- `UPLOAD_STICKER: 0`
+- `WAFFLE_LINKING_NONCE_FETCH: 5`

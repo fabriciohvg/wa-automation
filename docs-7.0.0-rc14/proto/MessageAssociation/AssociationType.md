@@ -1,0 +1,28 @@
+# proto.MessageAssociation.AssociationType
+
+> Baileys **v7** reference — package version `7.0.0-rc14` (npm `latest`). Not valid for v6 or v8.
+
+Protobuf enum
+
+## Enumeration Members
+
+- `BOT_PLUGIN: 2`
+- `EVENT_COVER_IMAGE: 3`
+- `HD_IMAGE_DUAL_UPLOAD: 10`
+- `HD_VIDEO_DUAL_UPLOAD: 5`
+- `HEVC_VIDEO_DUAL_UPLOAD: 19`
+- `MEDIA_ALBUM: 1`
+- `MEDIA_POLL: 7`
+- `MOTION_PHOTO: 12`
+- `STATUS_ADD_YOURS: 8`
+- `STATUS_ADD_YOURS_AI_IMAGINE: 15`
+- `STATUS_ADD_YOURS_DIWALI: 17`
+- `STATUS_EXTERNAL_RESHARE: 6`
+- `STATUS_LINK_ACTION: 13`
+- `STATUS_NOTIFICATION: 9`
+- `STATUS_POLL: 4`
+- `STATUS_QUESTION: 16`
+- `STATUS_REACTION: 18`
+- `STICKER_ANNOTATION: 11`
+- `UNKNOWN: 0`
+- `VIEW_ALL_REPLIES: 14`

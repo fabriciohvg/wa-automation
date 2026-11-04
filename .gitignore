@@ -1,0 +1,43 @@
+# Banco de dados (conversas e contatos)
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+
+# Estado de autenticação da Baileys (equivale a acesso à conta)
+auth/
+auth_info*/
+baileys_auth*/
+creds.json
+app-state-sync-*.json
+pre-key-*.json
+sender-key-*.json
+session-*.json
+
+# Dados sincronizados
+data/
+media/
+backups/
+
+# Segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependências, build e logs
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+logs/
+*.log
+
+# Sistema e ferramentas locais
+.DS_Store
+.claude/settings.local.json

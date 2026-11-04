@@ -1,0 +1,448 @@
+# Baileys API reference index
+
+> Baileys **v7** reference — package version `7.0.0-rc14` (npm `latest`). Not valid for v6 or v8.
+
+Generated (TypeDoc) from Baileys `master` commit `81345beb67ca` = version `7.0.0-rc14`.
+One file per exported symbol: `api/<kind>/<Name>.md`. Signatures are inlined; type names are plain
+text — find a referenced type with a glob like `api/**/<Name>.md` or `proto/**/<Name>.md`.
+Unexported helper types (e.g. `Mentionable`, `Contextable`, `WithDimensions`) have no page.
+
+**Start here:** [`makeWASocket`](functions/makeWASocket.md) — its return value is the socket; every
+`sock.*` method (sendMessage, groupCreate, …) is listed there with its signature.
+Also: [`SocketConfig`](types/SocketConfig.md), [`BaileysEventMap`](types/BaileysEventMap.md) (all `sock.ev` events),
+[`AnyMessageContent`](types/AnyMessageContent.md) (sendMessage payloads), [`DisconnectReason`](enums/DisconnectReason.md).
+
+## Functions
+
+- [addTransactionCapability](functions/addTransactionCapability.md) `addTransactionCapability(state: SignalKeyStore, logger: ILogger, __namedParameters: TransactionCapabilityOptions): SignalKeyStoreWithTransaction` — Adds DB-like transaction capability to the SignalKeyStore Uses AsyncLocalStorage for automatic context management
+- [aesDecrypt](functions/aesDecrypt.md) `aesDecrypt(buffer: Uint8Array, key: Uint8Array): Buffer<ArrayBuffer>` — decrypt AES 256 CBC; where the IV is prefixed to the buffer
+- [aesDecryptCTR](functions/aesDecryptCTR.md) `aesDecryptCTR(ciphertext: Uint8Array, key: Uint8Array, iv: Uint8Array): Buffer<ArrayBuffer>`
+- [aesDecryptGCM](functions/aesDecryptGCM.md) `aesDecryptGCM(ciphertext: Uint8Array, key: Uint8Array, iv: Uint8Array, additionalData: Uint8Array): Buffer<ArrayBuffer>` — decrypt AES 256 GCM; where the auth tag is suffixed to the ciphertext
+- [aesDecryptWithIV](functions/aesDecryptWithIV.md) `aesDecryptWithIV(buffer: Uint8Array, key: Uint8Array, IV: Uint8Array): Buffer<ArrayBuffer>` — decrypt AES 256 CBC
+- [aesEncrypWithIV](functions/aesEncrypWithIV.md) `aesEncrypWithIV(buffer: Buffer, key: Buffer, IV: Buffer): Buffer<ArrayBuffer>`
+- [aesEncrypt](functions/aesEncrypt.md) `aesEncrypt(buffer: Uint8Array, key: Uint8Array): Buffer<ArrayBuffer>`
+- [aesEncryptCTR](functions/aesEncryptCTR.md) `aesEncryptCTR(plaintext: Uint8Array, key: Uint8Array, iv: Uint8Array): Buffer<ArrayBuffer>`
+- [aesEncryptGCM](functions/aesEncryptGCM.md) `aesEncryptGCM(plaintext: Uint8Array, key: Uint8Array, iv: Uint8Array, additionalData: Uint8Array): Buffer<ArrayBuffer>` — encrypt AES 256 GCM; where the tag tag is suffixed to the ciphertext
+- [aggregateMessageKeysNotFromMe](functions/aggregateMessageKeysNotFromMe.md) `aggregateMessageKeysNotFromMe(keys: WAMessageKey[]): object[]` — Given a list of message keys, aggregates them by chat & sender.
+- [areJidsSameUser](functions/areJidsSameUser.md) `areJidsSameUser(jid1: undefined | string, jid2: undefined | string): boolean` — is the jid a user
+- [assertMeId](functions/assertMeId.md) `assertMeId(creds: AuthenticationCreds): string` — Returns the authenticated user's JID, or throws a Boom-401 if creds are not yet authenticated.
+- [assertMediaContent](functions/assertMediaContent.md) `assertMediaContent(content: undefined | null | IMessage): IVideoMessage | IImageMessage | IAudioMessage | IDocumentMessage | IStickerMessage` — Checks whether the given message is a media message; if it is returns the inner content
+- [assertNodeErrorFree](functions/assertNodeErrorFree.md) `assertNodeErrorFree(node: BinaryNode): void`
+- [binaryNodeToString](functions/binaryNodeToString.md) `binaryNodeToString(node: undefined | string | BinaryNode | Uint8Array | BinaryNode[], i: number = 0): string`
+- [bindWaitForConnectionUpdate](functions/bindWaitForConnectionUpdate.md) `bindWaitForConnectionUpdate(ev: BaileysEventEmitter): (check, timeoutMs?) => Promise<void>`
+- [bindWaitForEvent](functions/bindWaitForEvent.md) `bindWaitForEvent<T>(ev: BaileysEventEmitter, event: T): (check, timeoutMs?) => Promise<void>`
+- [buildAckStanza](functions/buildAckStanza.md) `buildAckStanza(node: BinaryNode, errorCode?: number, meId?: string): BinaryNode` — Builds an ACK stanza for a received node.
+- [buildPairingQRData](functions/buildPairingQRData.md) `buildPairingQRData(ref: string, noiseKeyB64: string, identityKeyB64: string, advB64: string, browser: WABrowserDescription): string`
+- [bytesToCrockford](functions/bytesToCrockford.md) `bytesToCrockford(buffer: Buffer): string`
+- [chatModificationToAppPatch](functions/chatModificationToAppPatch.md) `chatModificationToAppPatch(mod: ChatModification, jid: string): WAPatchCreate`
+- [cleanMessage](functions/cleanMessage.md) `cleanMessage(message: WAMessage, meId: string, meLid: string): void` — Cleans a received message to further processing
+- [configureSuccessfulPairing](functions/configureSuccessfulPairing.md) `configureSuccessfulPairing(stanza: BinaryNode, __namedParameters: Pick<AuthenticationCreds, "signedIdentityKey" | "advSecretKey" | "signalIdentities">): object`
+- [createSignalIdentity](functions/createSignalIdentity.md) `createSignalIdentity(wid: string, accountSignatureKey: Uint8Array): SignalIdentity`
+- [debouncedTimeout](functions/debouncedTimeout.md) `debouncedTimeout(intervalMs: number = 1000, task?: () => void): object`
+- [decodeBinaryNode](functions/decodeBinaryNode.md) `decodeBinaryNode(buff: Buffer): Promise<BinaryNode>`
+- [decodeDecompressedBinaryNode](functions/decodeDecompressedBinaryNode.md) `decodeDecompressedBinaryNode(buffer: Buffer, opts: Pick<__module, "TAGS" | "DOUBLE_BYTE_TOKENS" | "SINGLE_BYTE_TOKENS">, indexRef): BinaryNode`
+- [decodeMediaRetryNode](functions/decodeMediaRetryNode.md) `decodeMediaRetryNode(node: BinaryNode): object`
+- [decodeMessageNode](functions/decodeMessageNode.md) `decodeMessageNode(stanza: BinaryNode, meId: string, meLid: string): object` — Decode the received node as a message.
+- [decodePatches](functions/decodePatches.md)
+- [decodeSyncdMutations](functions/decodeSyncdMutations.md)
+- [decodeSyncdPatch](functions/decodeSyncdPatch.md)
+- [decodeSyncdSnapshot](functions/decodeSyncdSnapshot.md)
+- [decompressingIfRequired](functions/decompressingIfRequired.md) `decompressingIfRequired(buffer: Buffer): Promise<Buffer<ArrayBufferLike>>`
+- [decryptEventResponse](functions/decryptEventResponse.md) `decryptEventResponse(response: IPollEncValue, ctx: EventContext): EventResponseMessage` — Decrypt an event response
+- [decryptMediaRetryData](functions/decryptMediaRetryData.md) `decryptMediaRetryData(__namedParameters, mediaKey: Uint8Array, msgId: string): MediaRetryNotification`
+- [decryptMessageNode](functions/decryptMessageNode.md) `decryptMessageNode(stanza: BinaryNode, meId: string, meLid: string, repository: SignalRepositoryWithLIDStore, logger: ILogger): object`
+- [decryptPollVote](functions/decryptPollVote.md) `decryptPollVote(vote: IPollEncValue, ctx: PollContext): PollVoteMessage` — Decrypt a poll vote
+- [delay](functions/delay.md) `delay(ms: number): Promise<void>`
+- [delayCancellable](functions/delayCancellable.md) `delayCancellable(ms: number): object`
+- [derivePairingCodeKey](functions/derivePairingCodeKey.md) `derivePairingCodeKey(pairingCode: string, salt: Buffer): Promise<Buffer<ArrayBufferLike>>`
+- [downloadAndProcessHistorySyncNotification](functions/downloadAndProcessHistorySyncNotification.md)
+- [downloadContentFromMessage](functions/downloadContentFromMessage.md)
+- [downloadEncryptedContent](functions/downloadEncryptedContent.md) `downloadEncryptedContent(downloadUrl: string, __namedParameters: MediaDecryptionKeyInfo, __namedParameters: MediaDownloadOptions = {}): Promise<Transform>` — Decrypts and downloads an AES256-CBC encrypted file given the keys.
+- [downloadExternalBlob](functions/downloadExternalBlob.md) `downloadExternalBlob(blob: IExternalBlobReference, options: RequestInit): Promise<Buffer<ArrayBuffer>>`
+- [downloadExternalPatch](functions/downloadExternalPatch.md) `downloadExternalPatch(blob: IExternalBlobReference, options: RequestInit): Promise<SyncdMutations>`
+- [downloadHistory](functions/downloadHistory.md) `downloadHistory(msg: IHistorySyncNotification, options: RequestInit): Promise<HistorySync>`
+- [downloadMediaMessage](functions/downloadMediaMessage.md) `downloadMediaMessage<Type>(message: WAMessage, type: Type, options: MediaDownloadOptions, ctx?: DownloadMediaMessageContext): Promise<Type extends "buffer" ? Buffer<ArrayBufferLike> : Transform>` — Downloads the given message.
+- [encodeBase64EncodedStringForUpload](functions/encodeBase64EncodedStringForUpload.md) `encodeBase64EncodedStringForUpload(b64: string): string`
+- [encodeBigEndian](functions/encodeBigEndian.md) `encodeBigEndian(e: number, t: number = 4): Uint8Array<ArrayBuffer>`
+- [encodeBinaryNode](functions/encodeBinaryNode.md) `encodeBinaryNode(node: BinaryNode, opts: Pick<__module, "TAGS" | "TOKEN_MAP"> = constants, buffer: number[] = ...): Buffer`
+- [encodeNewsletterMessage](functions/encodeNewsletterMessage.md) `encodeNewsletterMessage(message: IMessage): Uint8Array`
+- [encodeSignedDeviceIdentity](functions/encodeSignedDeviceIdentity.md) `encodeSignedDeviceIdentity(account: IADVSignedDeviceIdentity, includeSignatureKey: boolean): Uint8Array`
+- [encodeSyncdPatch](functions/encodeSyncdPatch.md) `encodeSyncdPatch(__namedParameters: WAPatchCreate, myAppStateKeyId: string, state: LTHashState, getAppStateSyncKey: FetchAppStateSyncKey): Promise<{ patch: ISyncdPatch; state: LTHashState; }>`
+- [encodeWAM](functions/encodeWAM.md) `encodeWAM(binaryInfo: BinaryInfo): Buffer<ArrayBuffer>`
+- [encodeWAMessage](functions/encodeWAMessage.md) `encodeWAMessage(message: IMessage): Buffer<ArrayBuffer>`
+- [encryptMediaRetryRequest](functions/encryptMediaRetryRequest.md) `encryptMediaRetryRequest(key: WAMessageKey, mediaKey: Uint8Array | Buffer<ArrayBufferLike>, meId: string): BinaryNode` — Generate a binary node that will request the phone to re-upload the media & return the newly uploaded URL
+- [encryptedStream](functions/encryptedStream.md)
+- [ensureLTHashStateVersion](functions/ensureLTHashStateVersion.md) `ensureLTHashStateVersion(state: LTHashState): LTHashState`
+- [extensionForMediaMessage](functions/extensionForMediaMessage.md) `extensionForMediaMessage(message: IMessage): string`
+- [extractAddressingContext](functions/extractAddressingContext.md) `extractAddressingContext(stanza: BinaryNode): object`
+- [extractDeviceJids](functions/extractDeviceJids.md) `extractDeviceJids(result: USyncQueryResultList[], myJid: string, myLid: string, excludeZeroDevices: boolean): FullJid[]`
+- [extractE2ESessionFromRetryReceipt](functions/extractE2ESessionFromRetryReceipt.md)
+- [extractImageThumb](functions/extractImageThumb.md) `extractImageThumb(bufferOrFilePath: string | Buffer<ArrayBufferLike> | Readable, width: number = 32): Promise<{ buffer: any; original: { height: any; width: any; }; }>`
+- [extractMessageContent](functions/extractMessageContent.md) `extractMessageContent(content: undefined | null | IMessage): undefined | IMessage` — Extract the true message content from a message Eg.
+- [extractSyncdPatches](functions/extractSyncdPatches.md)
+- [extractUrlFromText](functions/extractUrlFromText.md) `extractUrlFromText(text: string): undefined | string` — Uses a regex to test whether the string contains a URL, and returns the URL if it does.
+- [fetchLatestBaileysVersion](functions/fetchLatestBaileysVersion.md) `fetchLatestBaileysVersion(options: RequestInit = {}): Promise<{ error: undefined; isLatest: boolean; version: WAVersion; } | { error: unknown; isLatest: boolean; version: WAVersion; }>` — utility that fetches latest baileys version from the master branch.
+- [fetchLatestWaWebVersion](functions/fetchLatestWaWebVersion.md) `fetchLatestWaWebVersion(options: RequestInit = {}): Promise<{ error: undefined; isLatest: boolean; version: WAVersion; } | { error: unknown; isLatest: boolean; version: WAVersion; }>` — A utility that fetches the latest web version of whatsapp.
+- [generateForwardMessageContent](functions/generateForwardMessageContent.md) `generateForwardMessageContent(message: WAMessage, forceForward?: boolean): IMessage` — Generate forwarded message content like WA does
+- [generateLinkPreviewIfRequired](functions/generateLinkPreviewIfRequired.md) `generateLinkPreviewIfRequired(text: string, getUrlInfo: undefined | (text) => Promise<undefined | WAUrlInfo>, logger: undefined | ILogger): Promise<undefined | WAUrlInfo>`
+- [generateLoginNode](functions/generateLoginNode.md) `generateLoginNode(userJid: string, config: SocketConfig): IClientPayload`
+- [generateMdTagPrefix](functions/generateMdTagPrefix.md) `generateMdTagPrefix(): string` — unique message tag prefix for MD clients
+- [generateMessageID](functions/generateMessageID.md) `generateMessageID(): string`
+- [generateMessageIDV2](functions/generateMessageIDV2.md) `generateMessageIDV2(userId?: string): string`
+- [generateOrGetPreKeys](functions/generateOrGetPreKeys.md) `generateOrGetPreKeys(creds: AuthenticationCreds, range: number): object`
+- [generateParticipantHashV2](functions/generateParticipantHashV2.md) `generateParticipantHashV2(participants: string[]): string`
+- [generateProfilePicture](functions/generateProfilePicture.md) `generateProfilePicture(mediaUpload: WAMediaUpload, dimensions?): Promise<{ img: Buffer<ArrayBufferLike>; }>`
+- [generateRegistrationId](functions/generateRegistrationId.md) `generateRegistrationId(): number`
+- [generateRegistrationNode](functions/generateRegistrationNode.md) `generateRegistrationNode(__namedParameters: SignalCreds, config: SocketConfig): ClientPayload`
+- [generateSignalPubKey](functions/generateSignalPubKey.md) `generateSignalPubKey(pubKey: Uint8Array | Buffer<ArrayBufferLike>): Uint8Array | Buffer<ArrayBufferLike>` — prefix version byte to the pub keys, required for some curve crypto functions
+- [generateThumbnail](functions/generateThumbnail.md) `generateThumbnail(file: string, mediaType: "image" | "video", options): Promise<{ originalImageDimensions: undefined | { height: number; width: number; }; thumbnail: undefined | string; }>` — generates a thumbnail for a given media, if required
+- [generateWAMessage](functions/generateWAMessage.md) `generateWAMessage(jid: string, content: AnyMessageContent, options: MessageGenerationOptions): Promise<WAMessage>`
+- [generateWAMessageContent](functions/generateWAMessageContent.md) `generateWAMessageContent(message: AnyMessageContent, options: MessageContentGenerationOptions): Promise<Message>`
+- [generateWAMessageFromContent](functions/generateWAMessageFromContent.md) `generateWAMessageFromContent(jid: string, message: IMessage, options: MessageGenerationOptionsFromContent): WAMessage`
+- [getAggregateResponsesInEventMessage](functions/getAggregateResponsesInEventMessage.md) `getAggregateResponsesInEventMessage(msg: Pick<WAMessage, "eventResponses">, meId?: string): ResponseAggregation[]` — Aggregates all event responses in an event message.
+- [getAggregateVotesInPollMessage](functions/getAggregateVotesInPollMessage.md) `getAggregateVotesInPollMessage(msg: Pick<WAMessage, "message" | "pollUpdates">, meId?: string): VoteAggregation[]` — Aggregates all poll updates in a poll.
+- [getAllBinaryNodeChildren](functions/getAllBinaryNodeChildren.md) `getAllBinaryNodeChildren(__namedParameters: BinaryNode): BinaryNode[]`
+- [getAudioDuration](functions/getAudioDuration.md) `getAudioDuration(buffer: string | Buffer<ArrayBufferLike> | Readable): Promise<undefined | number>`
+- [getAudioWaveform](functions/getAudioWaveform.md) `getAudioWaveform(buffer: string | Buffer<ArrayBufferLike> | Readable, logger?: ILogger): Promise<undefined | Uint8Array<ArrayBuffer>>` — referenced from and modifying https://github.com/wppconnect-team/wa-js/blob/main/src/chat/functions/prepareAudioWaveform.ts
+- [getBinaryNodeChild](functions/getBinaryNodeChild.md) `getBinaryNodeChild(node: undefined | BinaryNode, childTag: string): undefined | BinaryNode`
+- [getBinaryNodeChildBuffer](functions/getBinaryNodeChildBuffer.md) `getBinaryNodeChildBuffer(node: undefined | BinaryNode, childTag: string): undefined | Uint8Array | Buffer<ArrayBufferLike>`
+- [getBinaryNodeChildString](functions/getBinaryNodeChildString.md) `getBinaryNodeChildString(node: undefined | BinaryNode, childTag: string): undefined | string`
+- [getBinaryNodeChildUInt](functions/getBinaryNodeChildUInt.md) `getBinaryNodeChildUInt(node: BinaryNode, childTag: string, length: number): undefined | number`
+- [getBinaryNodeChildren](functions/getBinaryNodeChildren.md) `getBinaryNodeChildren(node: undefined | BinaryNode, childTag: string): BinaryNode[]`
+- [getBinaryNodeMessages](functions/getBinaryNodeMessages.md) `getBinaryNodeMessages(__namedParameters: BinaryNode): WebMessageInfo[]`
+- [getCallStatusFromNode](functions/getCallStatusFromNode.md) `getCallStatusFromNode(__namedParameters: BinaryNode): WACallUpdateType`
+- [getChatId](functions/getChatId.md) `getChatId(__namedParameters: WAMessageKey): string` — Get the ID of the chat from the given key.
+- [getCodeFromWSError](functions/getCodeFromWSError.md) `getCodeFromWSError(error: Error): number`
+- [getCompanionPlatformId](functions/getCompanionPlatformId.md) `getCompanionPlatformId(browser: WABrowserDescription): string`
+- [getCompanionWebClientType](functions/getCompanionWebClientType.md) `getCompanionWebClientType(__namedParameters: WABrowserDescription): CompanionWebClientType`
+- [getContentType](functions/getContentType.md) `getContentType(content: undefined | IMessage): undefined | keyof IMessage` — Get the key to access the true type of content
+- [getDecryptionJid](functions/getDecryptionJid.md) `getDecryptionJid(sender: string, repository: SignalRepositoryWithLIDStore): Promise<string>`
+- [getDevice](functions/getDevice.md) `getDevice(id: string): "web" | "unknown" | "android" | "ios" | "desktop"` — Returns the device predicted by message ID
+- [getErrorCodeFromStreamError](functions/getErrorCodeFromStreamError.md) `getErrorCodeFromStreamError(node: BinaryNode): object` — Stream errors generally provide a reason, map that to a baileys DisconnectReason
+- [getHistoryMsg](functions/getHistoryMsg.md) `getHistoryMsg(message: IMessage): IHistorySyncNotification`
+- [getHttpStream](functions/getHttpStream.md) `getHttpStream(url: string | URL, options: RequestInit & object = {}): Promise<Readable>`
+- [getKeyAuthor](functions/getKeyAuthor.md) `getKeyAuthor(key: undefined | null | WAMessageKey, meId: string = 'me'): string`
+- [getMediaKeys](functions/getMediaKeys.md) — generates all the keys required to encrypt/decrypt & sign a media message
+- [getNextPreKeys](functions/getNextPreKeys.md) `getNextPreKeys(__namedParameters: AuthenticationState, count: number): Promise<{ preKeys: {}; update: Partial<AuthenticationCreds>; }>` — get the next N keys for upload or processing
+- [getNextPreKeysNode](functions/getNextPreKeysNode.md) `getNextPreKeysNode(state: AuthenticationState, count: number): Promise<{ node: BinaryNode; update: Partial<AuthenticationCreds>; }>`
+- [getPlatformId](functions/getPlatformId.md) `getPlatformId(browser: string): string`
+- [getPreKeys](functions/getPreKeys.md) `getPreKeys(__namedParameters: SignalKeyStore, min: number, limit: number): Promise<{}>`
+- [getRawMediaUploadData](functions/getRawMediaUploadData.md)
+- [getServerFromDomainType](functions/getServerFromDomainType.md) `getServerFromDomainType(initialServer: string, domainType?: WAJIDDomains): JidServer`
+- [getStatusCodeForMediaRetry](functions/getStatusCodeForMediaRetry.md) `getStatusCodeForMediaRetry(code: number): 200 | 404 | 412 | 418`
+- [getStatusFromReceiptType](functions/getStatusFromReceiptType.md) `getStatusFromReceiptType(type: type from receipt): undefined | Status` — Given a type of receipt, returns what the new status of the message should be
+- [getStream](functions/getStream.md)
+- [getUrlFromDirectPath](functions/getUrlFromDirectPath.md) `getUrlFromDirectPath(directPath: string, host: string = DEF_MEDIA_HOST): string`
+- [getUrlInfo](functions/getUrlInfo.md) `getUrlInfo(text: string, opts: URLGenerationOptions = ...): Promise<undefined | WAUrlInfo>` — Given a piece of text, checks for any URL present, generates link preview for the same and returns it Return undefined if the fetch failed or no URL was found
+- [getWAUploadToServer](functions/getWAUploadToServer.md) `getWAUploadToServer(__namedParameters: SocketConfig, refreshMediaConn: (force) => Promise<MediaConnInfo>): WAMediaUploadFunction`
+- [handleIdentityChange](functions/handleIdentityChange.md) `handleIdentityChange(node: BinaryNode, ctx: IdentityChangeContext): Promise<IdentityChangeResult>`
+- [hasNonNullishProperty](functions/hasNonNullishProperty.md)
+- [hkdfInfoKey](functions/hkdfInfoKey.md)
+- [hmacSign](functions/hmacSign.md) `hmacSign(buffer: Uint8Array | Buffer<ArrayBufferLike>, key: Uint8Array | Buffer<ArrayBufferLike>, variant: "sha256" | "sha512"): NonSharedBuffer`
+- [initAuthCreds](functions/initAuthCreds.md) `initAuthCreds(): AuthenticationCreds`
+- [isAppStateSyncIrrecoverable](functions/isAppStateSyncIrrecoverable.md) `isAppStateSyncIrrecoverable(error: any, attempts: number): boolean` — Determines if an app state sync error is unrecoverable.
+- [isHostedLidUser](functions/isHostedLidUser.md) `isHostedLidUser(jid: undefined | string): undefined | boolean` — is the jid a hosted LID
+- [isHostedPnUser](functions/isHostedPnUser.md) `isHostedPnUser(jid: undefined | string): undefined | boolean` — is the jid a hosted PN
+- [isJidBot](functions/isJidBot.md) `isJidBot(jid: undefined | string): undefined | boolean | ""`
+- [isJidBroadcast](functions/isJidBroadcast.md) `isJidBroadcast(jid: undefined | string): undefined | boolean` — is the jid a broadcast
+- [isJidGroup](functions/isJidGroup.md) `isJidGroup(jid: undefined | string): undefined | boolean` — is the jid a group
+- [isJidMetaAI](functions/isJidMetaAI.md) `isJidMetaAI(jid: undefined | string): undefined | boolean` — is the jid Meta AI
+- [isJidNewsletter](functions/isJidNewsletter.md) `isJidNewsletter(jid: undefined | string): undefined | boolean` — is the jid a newsletter
+- [isJidStatusBroadcast](functions/isJidStatusBroadcast.md) `isJidStatusBroadcast(jid: string): jid is "status@broadcast"` — is the jid the status broadcast
+- [isLidUser](functions/isLidUser.md) `isLidUser(jid: undefined | string): undefined | boolean` — is the jid a LID
+- [isMissingKeyError](functions/isMissingKeyError.md) `isMissingKeyError(error: any): boolean` — Check if an error is a missing app state sync key.
+- [isPnUser](functions/isPnUser.md) `isPnUser(jid: undefined | string): undefined | boolean` — is the jid a PN user
+- [isRealMessage](functions/isRealMessage.md) `isRealMessage(message: WAMessage): boolean`
+- [isStringNullOrEmpty](functions/isStringNullOrEmpty.md) `isStringNullOrEmpty(value: undefined | null | string): value is undefined | null | ""`
+- [isWABusinessPlatform](functions/isWABusinessPlatform.md) `isWABusinessPlatform(platform: string): platform is "smba" | "smbi"` — Is the given platform WA business
+- [jidDecode](functions/jidDecode.md) `jidDecode(jid: undefined | string): undefined | FullJid`
+- [jidEncode](functions/jidEncode.md) `jidEncode(user: null | string | number, server: JidServer, device?: number, agent?: number): string`
+- [jidNormalizedUser](functions/jidNormalizedUser.md) `jidNormalizedUser(jid: undefined | string): string`
+- [makeCacheableSignalKeyStore](functions/makeCacheableSignalKeyStore.md) `makeCacheableSignalKeyStore(store: SignalKeyStore, logger?: ILogger, _cache?: CacheStore): SignalKeyStore` — Adds caching capability to a SignalKeyStore
+- [makeEventBuffer](functions/makeEventBuffer.md) `makeEventBuffer(logger: ILogger): BaileysBufferableEventEmitter` — The event buffer logically consolidates different events into a single event making the data processing more efficient.
+- [makeLtHashGenerator](functions/makeLtHashGenerator.md) `makeLtHashGenerator(__namedParameters: Pick<LTHashState, "hash" | "indexValueMap">): object`
+- [makeNoiseHandler](functions/makeNoiseHandler.md) `makeNoiseHandler(__namedParameters): object`
+- [makeWASocket](functions/makeWASocket.md) `makeWASocket(config: UserFacingSocketConfig): object`
+- [mediaMessageSHA256B64](functions/mediaMessageSHA256B64.md) `mediaMessageSHA256B64(message: IMessage): undefined | null | string` — gets the SHA256 of the given media message
+- [newLTHashState](functions/newLTHashState.md) `newLTHashState(): LTHashState`
+- [normalizeMessageContent](functions/normalizeMessageContent.md) `normalizeMessageContent(content: undefined | null | IMessage): undefined | IMessage` — Normalizes ephemeral, view once messages to regular message content Eg.
+- [parseAndInjectE2ESessions](functions/parseAndInjectE2ESessions.md) `parseAndInjectE2ESessions(node: BinaryNode, repository: SignalRepositoryWithLIDStore): Promise<void>`
+- [prepareDisappearingMessageSettingContent](functions/prepareDisappearingMessageSettingContent.md) `prepareDisappearingMessageSettingContent(ephemeralExpiration?: number): Message`
+- [prepareWAMessageMedia](functions/prepareWAMessageMedia.md) `prepareWAMessageMedia(message: AnyMediaMessageContent, options: MessageContentGenerationOptions): Promise<Message>`
+- [processHistoryMessage](functions/processHistoryMessage.md) `processHistoryMessage(item: IHistorySync, logger?: ILogger): object`
+- [processSyncAction](functions/processSyncAction.md) `processSyncAction(syncAction: ChatMutation, ev: BaileysEventEmitter, me: Contact, initialSyncOpts?: InitialAppStateSyncOptions, logger?: ILogger): void`
+- [promiseTimeout](functions/promiseTimeout.md) `promiseTimeout<T>(ms: undefined | number, promise: (resolve, reject) => void): Promise<T>`
+- [reduceBinaryNodeToDictionary](functions/reduceBinaryNodeToDictionary.md) `reduceBinaryNodeToDictionary(node: BinaryNode, tag: string): object`
+- [sha256](functions/sha256.md) `sha256(buffer: Buffer): NonSharedBuffer`
+- [shouldIncrementChatUnread](functions/shouldIncrementChatUnread.md) `shouldIncrementChatUnread(message: WAMessage): boolean`
+- [signedKeyPair](functions/signedKeyPair.md) `signedKeyPair(identityKeyPair: KeyPair, keyId: number): object`
+- [toBuffer](functions/toBuffer.md) `toBuffer(stream: Readable): Promise<Buffer<ArrayBuffer>>`
+- [toNumber](functions/toNumber.md) `toNumber(t: undefined | null | number | Long): number`
+- [toReadable](functions/toReadable.md) `toReadable(buffer: Buffer): Readable`
+- [transferDevice](functions/transferDevice.md) `transferDevice(fromJid: string, toJid: string): string`
+- [trimUndefined](functions/trimUndefined.md) `trimUndefined(obj): object`
+- [unixTimestampSeconds](functions/unixTimestampSeconds.md) `unixTimestampSeconds(date: Date = ...): number` — unix timestamp of a date in seconds
+- [unpadRandomMax16](functions/unpadRandomMax16.md) `unpadRandomMax16(e: Uint8Array | Buffer<ArrayBufferLike>): Uint8Array<ArrayBuffer>`
+- [updateMessageWithEventResponse](functions/updateMessageWithEventResponse.md) `updateMessageWithEventResponse(msg: Pick<WAMessage, "eventResponses">, update: IEventResponse): void` — Update the message with a new event response
+- [updateMessageWithPollUpdate](functions/updateMessageWithPollUpdate.md) `updateMessageWithPollUpdate(msg: Pick<WAMessage, "pollUpdates">, update: IPollUpdate): void` — Update the message with a new poll update
+- [updateMessageWithReaction](functions/updateMessageWithReaction.md) `updateMessageWithReaction(msg: Pick<WAMessage, "reactions">, reaction: IReaction): void` — Update the message with a new reaction
+- [updateMessageWithReceipt](functions/updateMessageWithReceipt.md) `updateMessageWithReceipt(msg: Pick<WAMessage, "userReceipt">, receipt: IUserReceipt): void` — Upserts a receipt in the message
+- [uploadWithNodeHttp](functions/uploadWithNodeHttp.md) `uploadWithNodeHttp(__namedParameters: UploadParams, redirectCount: number = 0): Promise<undefined | MediaUploadResult>`
+- [useMultiFileAuthState](functions/useMultiFileAuthState.md) `useMultiFileAuthState(folder: string): Promise<{ saveCreds: () => Promise<void>; state: AuthenticationState; }>` — stores the full authentication state in a single folder.
+- [writeRandomPadMax16](functions/writeRandomPadMax16.md) `writeRandomPadMax16(msg: Uint8Array): Buffer<ArrayBuffer>`
+- [xmppPreKey](functions/xmppPreKey.md) `xmppPreKey(pair: KeyPair, id: number): BinaryNode`
+- [xmppSignedPreKey](functions/xmppSignedPreKey.md) `xmppSignedPreKey(key: SignedKeyPair): BinaryNode`
+
+## Type aliases
+
+- [AccountSettings](types/AccountSettings.md)
+- [AlbumMessageOptions](types/AlbumMessageOptions.md)
+- [AnyMediaMessageContent](types/AnyMediaMessageContent.md)
+- [AnyMessageContent](types/AnyMessageContent.md)
+- [AnyRegularMessageContent](types/AnyRegularMessageContent.md)
+- [AuthenticationCreds](types/AuthenticationCreds.md)
+- [AuthenticationState](types/AuthenticationState.md)
+- [BaileysEvent](types/BaileysEvent.md)
+- [BaileysEventMap](types/BaileysEventMap.md)
+- [BinaryNode](types/BinaryNode.md) — the binary node WA uses internally for communication
+- [BinaryNodeAttributes](types/BinaryNodeAttributes.md)
+- [BinaryNodeCodingOptions](types/BinaryNodeCodingOptions.md)
+- [BinaryNodeData](types/BinaryNodeData.md)
+- [BotListInfo](types/BotListInfo.md)
+- [BrowsersMap](types/BrowsersMap.md)
+- [BufferedEventData](types/BufferedEventData.md)
+- [ButtonReplyInfo](types/ButtonReplyInfo.md)
+- [CacheStore](types/CacheStore.md)
+- [CatalogCollection](types/CatalogCollection.md)
+- [CatalogCursor](types/CatalogCursor.md)
+- [CatalogResult](types/CatalogResult.md)
+- [CatalogStatus](types/CatalogStatus.md)
+- [Chat](types/Chat.md)
+- [ChatModification](types/ChatModification.md)
+- [ChatMutation](types/ChatMutation.md)
+- [ChatMutationMap](types/ChatMutationMap.md)
+- [ChatUpdate](types/ChatUpdate.md)
+- [ConnectionState](types/ConnectionState.md)
+- [CurveKeyPair](types/CurveKeyPair.md)
+- [DebouncedTimeout](types/DebouncedTimeout.md)
+- [DeviceListData](types/DeviceListData.md)
+- [DisappearingModeData](types/DisappearingModeData.md)
+- [DownloadableMessage](types/DownloadableMessage.md)
+- [Event](types/Event.md)
+- [EventInputType](types/EventInputType.md)
+- [EventMessageOptions](types/EventMessageOptions.md)
+- [FullJid](types/FullJid.md)
+- [GetCatalogOptions](types/GetCatalogOptions.md)
+- [Global](types/Global.md)
+- [GroupInviteInfo](types/GroupInviteInfo.md)
+- [GroupMetadataParticipants](types/GroupMetadataParticipants.md)
+- [GroupParticipant](types/GroupParticipant.md)
+- [IdentityChangeContext](types/IdentityChangeContext.md)
+- [IdentityChangeResult](types/IdentityChangeResult.md)
+- [InitialAppStateSyncOptions](types/InitialAppStateSyncOptions.md)
+- [InitialReceivedChatsState](types/InitialReceivedChatsState.md)
+- [JidServer](types/JidServer.md)
+- [JidWithDevice](types/JidWithDevice.md)
+- [KeyIndexData](types/KeyIndexData.md)
+- [KeyPair](types/KeyPair.md)
+- [LIDMapping](types/LIDMapping.md)
+- [LTHashState](types/LTHashState.md)
+- [LastMessageList](types/LastMessageList.md) — the last messages in a chat, sorted reverse-chronologically.
+- [MediaConnInfo](types/MediaConnInfo.md)
+- [MediaDecryptionKeyInfo](types/MediaDecryptionKeyInfo.md)
+- [MediaDownloadOptions](types/MediaDownloadOptions.md)
+- [MediaGenerationOptions](types/MediaGenerationOptions.md)
+- [MediaType](types/MediaType.md)
+- [MessageContentGenerationOptions](types/MessageContentGenerationOptions.md)
+- [MessageGenerationOptions](types/MessageGenerationOptions.md)
+- [MessageGenerationOptionsFromContent](types/MessageGenerationOptionsFromContent.md)
+- [MessageReceiptType](types/MessageReceiptType.md)
+- [MessageRelayOptions](types/MessageRelayOptions.md)
+- [MessageType](types/MessageType.md) — Set of message types that are supported by the library
+- [MessageUpsertType](types/MessageUpsertType.md) — Type of message upsert 1.
+- [MessageUserReceipt](types/MessageUserReceipt.md)
+- [MessageUserReceiptUpdate](types/MessageUserReceiptUpdate.md)
+- [MessageWithContextInfo](types/MessageWithContextInfo.md)
+- [MinimalMessage](types/MinimalMessage.md)
+- [MiscMessageGenerationOptions](types/MiscMessageGenerationOptions.md)
+- [NewChatMessageCapInfo](types/NewChatMessageCapInfo.md)
+- [NewsletterUpdate](types/NewsletterUpdate.md)
+- [NewsletterViewRole](types/NewsletterViewRole.md)
+- [OrderDetails](types/OrderDetails.md)
+- [OrderPrice](types/OrderPrice.md)
+- [OrderProduct](types/OrderProduct.md)
+- [ParsedDeviceInfo](types/ParsedDeviceInfo.md)
+- [ParticipantAction](types/ParticipantAction.md)
+- [PatchedMessageWithRecipientJID](types/PatchedMessageWithRecipientJID.md)
+- [PendingPhoneRequest](types/PendingPhoneRequest.md)
+- [PollMessageOptions](types/PollMessageOptions.md)
+- [PossiblyExtendedCacheStore](types/PossiblyExtendedCacheStore.md)
+- [Product](types/Product.md)
+- [ProductAvailability](types/ProductAvailability.md)
+- [ProductBase](types/ProductBase.md)
+- [ProductCreate](types/ProductCreate.md)
+- [ProductCreateResult](types/ProductCreateResult.md)
+- [ProductUpdate](types/ProductUpdate.md)
+- [ProtocolAddress](types/ProtocolAddress.md)
+- [ReachoutTimelockState](types/ReachoutTimelockState.md)
+- [RequestJoinAction](types/RequestJoinAction.md)
+- [RequestJoinMethod](types/RequestJoinMethod.md)
+- [SignalAuthState](types/SignalAuthState.md)
+- [SignalCreds](types/SignalCreds.md)
+- [SignalDataSet](types/SignalDataSet.md)
+- [SignalDataTypeMap](types/SignalDataTypeMap.md)
+- [SignalIdentity](types/SignalIdentity.md)
+- [SignalKeyStore](types/SignalKeyStore.md)
+- [SignalKeyStoreWithTransaction](types/SignalKeyStoreWithTransaction.md)
+- [SignalRepository](types/SignalRepository.md)
+- [SignedKeyPair](types/SignedKeyPair.md)
+- [SocketConfig](types/SocketConfig.md)
+- [StatusData](types/StatusData.md)
+- [TransactionCapabilityOptions](types/TransactionCapabilityOptions.md)
+- [URLGenerationOptions](types/URLGenerationOptions.md)
+- [USyncQueryResult](types/USyncQueryResult.md)
+- [USyncQueryResultList](types/USyncQueryResultList.md)
+- [UploadParams](types/UploadParams.md)
+- [UserFacingSocketConfig](types/UserFacingSocketConfig.md)
+- [Value](types/Value.md)
+- [WABrowserDescription](types/WABrowserDescription.md)
+- [WABusinessHoursConfig](types/WABusinessHoursConfig.md)
+- [WABusinessProfile](types/WABusinessProfile.md)
+- [WACallEvent](types/WACallEvent.md)
+- [WACallUpdateType](types/WACallUpdateType.md)
+- [WAConnectionState](types/WAConnectionState.md)
+- [WAContactMessage](types/WAContactMessage.md)
+- [WAContactsArrayMessage](types/WAContactsArrayMessage.md)
+- [WAContextInfo](types/WAContextInfo.md)
+- [WAGenericMediaMessage](types/WAGenericMediaMessage.md)
+- [WAInitResponse](types/WAInitResponse.md)
+- [WALocationMessage](types/WALocationMessage.md)
+- [WAMediaPayloadStream](types/WAMediaPayloadStream.md)
+- [WAMediaPayloadURL](types/WAMediaPayloadURL.md)
+- [WAMediaUpload](types/WAMediaUpload.md)
+- [WAMediaUploadFunction](types/WAMediaUploadFunction.md)
+- [WAMessage](types/WAMessage.md)
+- [WAMessageContent](types/WAMessageContent.md)
+- [WAMessageCursor](types/WAMessageCursor.md)
+- [WAMessageKey](types/WAMessageKey.md)
+- [WAMessageUpdate](types/WAMessageUpdate.md)
+- [WAPatchCreate](types/WAPatchCreate.md)
+- [WAPatchName](types/WAPatchName.md)
+- [WAPresence](types/WAPresence.md) — set of statuses visible to other people; see updatePresence() in WhatsAppWeb.Send
+- [WAPrivacyCallValue](types/WAPrivacyCallValue.md)
+- [WAPrivacyGroupAddValue](types/WAPrivacyGroupAddValue.md)
+- [WAPrivacyMessagesValue](types/WAPrivacyMessagesValue.md)
+- [WAPrivacyOnlineValue](types/WAPrivacyOnlineValue.md)
+- [WAPrivacyValue](types/WAPrivacyValue.md) — privacy settings in WhatsApp Web
+- [WAReadReceiptsValue](types/WAReadReceiptsValue.md)
+- [WASendableProduct](types/WASendableProduct.md)
+- [WASocket](types/WASocket.md)
+- [WATextMessage](types/WATextMessage.md)
+- [WAVersion](types/WAVersion.md)
+
+## Interfaces
+
+- [BaileysEventEmitter](interfaces/BaileysEventEmitter.md)
+- [Contact](interfaces/Contact.md)
+- [GroupMetadata](interfaces/GroupMetadata.md)
+- [GroupModificationResponse](interfaces/GroupModificationResponse.md)
+- [NewsletterCreateResponse](interfaces/NewsletterCreateResponse.md)
+- [NewsletterMetadata](interfaces/NewsletterMetadata.md)
+- [PresenceData](interfaces/PresenceData.md)
+- [RecentMessage](interfaces/RecentMessage.md)
+- [RecentMessageKey](interfaces/RecentMessageKey.md)
+- [RetryCounter](interfaces/RetryCounter.md)
+- [RetryStatistics](interfaces/RetryStatistics.md)
+- [SessionRecreateHistory](interfaces/SessionRecreateHistory.md)
+- [SignalRepositoryWithLIDStore](interfaces/SignalRepositoryWithLIDStore.md)
+- [WAGroupCreateResponse](interfaces/WAGroupCreateResponse.md)
+- [WAUrlInfo](interfaces/WAUrlInfo.md)
+
+## Classes
+
+- [BinaryInfo](classes/BinaryInfo.md)
+- [MessageRetryManager](classes/MessageRetryManager.md)
+- [USyncContactProtocol](classes/USyncContactProtocol.md)
+- [USyncDeviceProtocol](classes/USyncDeviceProtocol.md)
+- [USyncDisappearingModeProtocol](classes/USyncDisappearingModeProtocol.md)
+- [USyncQuery](classes/USyncQuery.md)
+- [USyncStatusProtocol](classes/USyncStatusProtocol.md)
+- [USyncUser](classes/USyncUser.md)
+- [USyncUsernameProtocol](classes/USyncUsernameProtocol.md)
+
+## Enums
+
+- [CompanionWebClientType](enums/CompanionWebClientType.md)
+- [DisconnectReason](enums/DisconnectReason.md)
+- [NewChatMessageCappingMVStatusType](enums/NewChatMessageCappingMVStatusType.md)
+- [NewChatMessageCappingOTEStatusType](enums/NewChatMessageCappingOTEStatusType.md)
+- [NewChatMessageCappingStatusType](enums/NewChatMessageCappingStatusType.md)
+- [QueryIds](enums/QueryIds.md)
+- [ReachoutTimelockEnforcementType](enums/ReachoutTimelockEnforcementType.md)
+- [RetryReason](enums/RetryReason.md)
+- [SyncState](enums/SyncState.md)
+- [WAJIDDomains](enums/WAJIDDomains.md)
+- [WAMessageAddressingMode](enums/WAMessageAddressingMode.md)
+- [XWAPaths](enums/XWAPaths.md)
+
+## Variables
+
+- [ACCOUNT_RESTRICTED_TEXT](variables/ACCOUNT_RESTRICTED_TEXT.md)
+- [ALL_WA_PATCH_NAMES](variables/ALL_WA_PATCH_NAMES.md)
+- [Browsers](variables/Browsers.md)
+- [BufferJSON](variables/BufferJSON.md)
+- [CALL_AUDIO_PREFIX](variables/CALL_AUDIO_PREFIX.md)
+- [CALL_VIDEO_PREFIX](variables/CALL_VIDEO_PREFIX.md)
+- [Curve](variables/Curve.md)
+- [DECRYPTION_RETRY_CONFIG](variables/DECRYPTION_RETRY_CONFIG.md)
+- [DEFAULT_CACHE_TTLS](variables/DEFAULT_CACHE_TTLS.md)
+- [DEFAULT_CONNECTION_CONFIG](variables/DEFAULT_CONNECTION_CONFIG.md)
+- [DEFAULT_ORIGIN](variables/DEFAULT_ORIGIN.md)
+- [DEF_CALLBACK_PREFIX](variables/DEF_CALLBACK_PREFIX.md)
+- [DEF_MEDIA_HOST](variables/DEF_MEDIA_HOST.md)
+- [DEF_TAG_PREFIX](variables/DEF_TAG_PREFIX.md)
+- [DICT_VERSION](variables/DICT_VERSION.md)
+- [FLAG_BYTE](variables/FLAG_BYTE.md)
+- [FLAG_EVENT](variables/FLAG_EVENT.md)
+- [FLAG_EXTENDED](variables/FLAG_EXTENDED.md)
+- [FLAG_FIELD](variables/FLAG_FIELD.md)
+- [FLAG_GLOBAL](variables/FLAG_GLOBAL.md)
+- [HISTORY_SYNC_PAUSED_TIMEOUT_MS](variables/HISTORY_SYNC_PAUSED_TIMEOUT_MS.md) — 120s timeout for history sync stall detection, same as WA Web's handleChunkProgress / restartPausedTimer (g = 120)
+- [INITIAL_PREKEY_COUNT](variables/INITIAL_PREKEY_COUNT.md)
+- [KEY_BUNDLE_TYPE](variables/KEY_BUNDLE_TYPE.md)
+- [LT_HASH_ANTI_TAMPERING](variables/LT_HASH_ANTI_TAMPERING.md) — LT Hash is a summation based hash algorithm that maintains the integrity of a piece of data over a series of mutations.
+- [MAX_SYNC_ATTEMPTS](variables/MAX_SYNC_ATTEMPTS.md)
+- [MEDIA_HKDF_KEY_MAPPING](variables/MEDIA_HKDF_KEY_MAPPING.md)
+- [MEDIA_KEYS](variables/MEDIA_KEYS.md)
+- [MEDIA_PATH_MAP](variables/MEDIA_PATH_MAP.md)
+- [META_AI_JID](variables/META_AI_JID.md)
+- [MIN_PREKEY_COUNT](variables/MIN_PREKEY_COUNT.md)
+- [MISSING_KEYS_ERROR_TEXT](variables/MISSING_KEYS_ERROR_TEXT.md)
+- [NACK_REASONS](variables/NACK_REASONS.md) — NACK reason codes we send to the server (client → server)
+- [NOISE_MODE](variables/NOISE_MODE.md)
+- [NOISE_WA_HEADER](variables/NOISE_WA_HEADER.md)
+- [NO_MESSAGE_FOUND_ERROR_TEXT](variables/NO_MESSAGE_FOUND_ERROR_TEXT.md)
+- [OFFICIAL_BIZ_JID](variables/OFFICIAL_BIZ_JID.md)
+- [PHONE_CONNECTION_CB](variables/PHONE_CONNECTION_CB.md)
+- [PLACEHOLDER_MAX_AGE_SECONDS](variables/PLACEHOLDER_MAX_AGE_SECONDS.md) — WA Web enforces a 14-day maximum age for placeholder resend requests
+- [PROCESSABLE_HISTORY_TYPES](variables/PROCESSABLE_HISTORY_TYPES.md)
+- [PSA_WID](variables/PSA_WID.md)
+- [SERVER_ERROR_CODES](variables/SERVER_ERROR_CODES.md) — Server-side error codes returned in ack stanzas (server → client) that we currently have dedicated handlers for.
+- [SERVER_JID](variables/SERVER_JID.md)
+- [STATUS_EXPIRY_SECONDS](variables/STATUS_EXPIRY_SECONDS.md) — Status messages older than 24 hours are considered expired
+- [STORIES_JID](variables/STORIES_JID.md)
+- [S_WHATSAPP_NET](variables/S_WHATSAPP_NET.md)
+- [TimeMs](variables/TimeMs.md)
+- [UNAUTHORIZED_CODES](variables/UNAUTHORIZED_CODES.md)
+- [UPLOAD_TIMEOUT](variables/UPLOAD_TIMEOUT.md)
+- [URL_REGEX](variables/URL_REGEX.md) — from: https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
+- [WAMessageStatus](variables/WAMessageStatus.md)
+- [WAMessageStubType](variables/WAMessageStubType.md)
+- [WA_ADV_ACCOUNT_SIG_PREFIX](variables/WA_ADV_ACCOUNT_SIG_PREFIX.md)
+- [WA_ADV_DEVICE_SIG_PREFIX](variables/WA_ADV_DEVICE_SIG_PREFIX.md)
+- [WA_ADV_HOSTED_ACCOUNT_SIG_PREFIX](variables/WA_ADV_HOSTED_ACCOUNT_SIG_PREFIX.md)
+- [WA_ADV_HOSTED_DEVICE_SIG_PREFIX](variables/WA_ADV_HOSTED_DEVICE_SIG_PREFIX.md)
+- [WA_CERT_DETAILS](variables/WA_CERT_DETAILS.md)
+- [WA_DEFAULT_EPHEMERAL](variables/WA_DEFAULT_EPHEMERAL.md)
+- [WEB_EVENTS](variables/WEB_EVENTS.md)
+- [WEB_GLOBALS](variables/WEB_GLOBALS.md)

@@ -1,0 +1,9 @@
+# WAMessageStatus
+
+> Baileys **v7** reference — package version `7.0.0-rc14` (npm `latest`). Not valid for v6 or v8.
+
+Variable · source `src/Types/Message.ts:39`
+
+```ts
+const WAMessageStatus: typeof Status = proto.WebMessageInfo.Status
+```
