@@ -30,7 +30,7 @@ Este projeto deve atingir os seguintes objetivos:
 
 - Obter e sincronizar/armazenar no banco de dados o máximo de informações possíveis dos contatos (nome, número de telefone no padrão do WhatsApp, foto de perfil, etc.)
 
-> Em relação ao nome dos contatos, é importante distinguir se o nome que está armazenado/exibido é o nome interno do usuário no WhatsApp (que ele definiu) ou se é o nome do contato que eu adicionei na conta. Por exemplo, pode ser que eu tenha salvado na minha conta o nome de um contato como "Matheus Ribeiro", mas esse usuário use o nome na conta dele do WhatsApp como "Dr. Matheus R. Silva". É importante que seja possível diferenciar essa informação. Se for possível, para os contatos salvos na minha conta, além de armazenar que o nome que eu uso, armazenar o nome que o usuário definiu na conta dele do WhatsApp.
+> Em relação ao nome dos contatos, é importante distinguir se o nome que está armazenado/exibido é o nome interno do usuário no WhatsApp (que ele definiu) ou se é o nome do contato que eu adicionei na conta. Por exemplo, pode ser que eu tenha salvado na minha conta o nome de um contato como "Fulano de Tal", mas esse usuário use o nome na conta dele do WhatsApp como "Dr. Fulano T. Silva". É importante que seja possível diferenciar essa informação. Se for possível, para os contatos salvos na minha conta, além de armazenar que o nome que eu uso, armazenar o nome que o usuário definiu na conta dele do WhatsApp.
 
 ### Conversas e mensagens
 
