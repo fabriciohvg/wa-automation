@@ -6,7 +6,11 @@ Objetivos, requisitos, padrões de código e commits: @AGENTS.md
 
 Estilo de escrita: @WRITING.md
 
+Tarefas do MVP: @TASKS.md
+
 ## Regras para o Claude Code
+
+- Executar as tarefas do `TASKS.md` na sequência indicada, uma de cada vez. Ao terminar, marcar `[~]` e parar. Só marcar `[x]` e começar a próxima depois da aprovação do autor do projeto na revisão.
 
 - Não incluir o Claude Code como coautor nos commits: sem `Co-Authored-By` nem outra linha de atribuição. Esta regra prevalece sobre o padrão da ferramenta.
 - Não implementar nem investigar itens da seção "Implementação/investigação futura" do `AGENTS.md` sem pedido explícito.
@@ -28,7 +32,7 @@ O linter é o Biome, com o formatador desligado; ESLint com `typescript-eslint` 
 
 ## Estado atual
 
-O scaffold abre o banco e encerra. Ainda não há schema, conexão com o WhatsApp nem sincronização.
+O scaffold abre o banco e encerra. Ainda não há schema, conexão com o WhatsApp nem sincronização. O andamento fica em `TASKS.md`.
 
 O repositório é público, então nada sensível pode ser versionado. Banco de dados e autenticação ficam em `data/`, que está no `.gitignore`.
 
@@ -57,7 +61,7 @@ Em `docs-7.0.0-rc14/`, comece pelo `README.md`, que é o índice:
 - Mantenha o estado de autenticação (chaves Signal) fora das tabelas de mensagens. Atualizações de `keys.set` precisam ser persistidas de imediato; um armazenamento próprio deve serializar com `BufferJSON`.
 
 **Sincronização**
-- Use `browser: Browsers.macOS('Desktop')` e mantenha `syncFullHistory` ativo. Os dois são necessários para receber o histórico estendido no sync inicial.
+- Use `browser: Browsers.macOS('Desktop')` e mantenha `syncFullHistory` ativo. Os dois são necessários para receber o histórico estendido no sync inicial, mas não bastam: o padrão de `shouldSyncHistoryMessage` recusa o tipo `FULL` (ver `dev-notes/history-sync-defaults.md`).
 - O histórico chega de forma assíncrona em `messaging-history.set`, em lotes que podem ter milhares de mensagens. Grave-os em transações em lote.
 - `sock.fetchMessageHistory` entrega os resultados nesse mesmo evento.
 - O QR Code vem no campo `qr` de `connection.update` e precisa ser renderizado pela aplicação.
@@ -68,7 +72,7 @@ Em `docs-7.0.0-rc14/`, comece pelo `README.md`, que é o índice:
 - Não compare JIDs com `===` nem os separe com `split('@')`, pois podem ter sufixo de dispositivo (`:2`). Use `jidDecode`, `jidNormalizedUser` e `areJidsSameUser`; este último não compara PN com LID.
 
 **Contatos**
-- `Contact.name` é o nome salvo na sua conta e `Contact.notify` é o nome que o usuário definiu no WhatsApp. Armazene-os em colunas separadas; é a distinção pedida no `AGENTS.md`.
+- `Contact.name` é o nome salvo na sua conta e `Contact.notify` é o nome que o usuário definiu no WhatsApp. Armazene-os em colunas separadas; é a distinção pedida no `AGENTS.md`. No histórico, `name` pode ter outra origem (ver `dev-notes/history-sync-defaults.md`).
 - `Contact.imgUrl` não é só uma URL: `'changed'` indica que a foto mudou e precisa ser buscada de novo com `sock.profilePictureUrl`, e `null` indica que não há foto.
 
 **Mídia**
