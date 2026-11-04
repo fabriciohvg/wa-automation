@@ -44,11 +44,11 @@ Este projeto deve atingir os seguintes objetivos:
 
 - Otimizar o código para performance, mantendo-o adequado para um ambiente de aprendizagem
 - Escrever o código em inglês (identificadores, strings, logs, schema do banco)
-- Escrever os comentários em português do Brasil, de forma clara e concisa. Não usar o estilo típico de "AI slop": comentários genéricos, enfeitados ou que apenas repetem o que o código já diz
+- Escrever os comentários em português do Brasil, seguindo o estilo definido em @WRITING.md
 
 ## Commits
 
-- Escrever mensagens concisas e claras, seguindo as boas práticas da indústria: Conventional Commits, em inglês, com assunto curto no imperativo e um commit por mudança lógica
+- Seguir as boas práticas da indústria: Conventional Commits, em inglês, com assunto curto no imperativo e um commit por mudança lógica. O estilo das mensagens segue @WRITING.md
 - Antes de qualquer commit, checar se há algo sensível entre os arquivos (credenciais e estado de autenticação da Baileys, banco de dados SQLite, mídias, `.env`) e atualizar o `.gitignore`
 
 ## Implementação/investigação futura

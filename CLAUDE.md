@@ -4,10 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Objetivos, requisitos, padrões de código e commits: @AGENTS.md
 
+Estilo de escrita: @WRITING.md
+
 ## Regras para o Claude Code
 
 - Não incluir o Claude Code como coautor nos commits: sem `Co-Authored-By` nem outra linha de atribuição. Esta regra prevalece sobre o padrão da ferramenta.
 - Não implementar nem investigar itens da seção "Implementação/investigação futura" do `AGENTS.md` sem pedido explícito.
+- Durante o desenvolvimento, registrar em `dev-notes/`, em Markdown, os gotchas, trade-offs e pontos distorcidos ou obscuros da documentação que forem identificados. Use um arquivo por assunto. Registre só o que for relevante e tiver sido verificado: nada de registros forçados, extrapolados ou falsos. Hipóteses devem ser marcadas como tal.
 
 ## Comandos
 
