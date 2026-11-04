@@ -1,0 +1,17 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
+	"files": {
+		"includes": ["src/**"]
+	},
+	"formatter": {
+		"enabled": false
+	},
+	"linter": {
+		"rules": {
+			"preset": "recommended",
+			"nursery": {
+				"noFloatingPromises": "error"
+			}
+		}
+	}
+}

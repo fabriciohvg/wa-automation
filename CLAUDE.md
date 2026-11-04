@@ -19,11 +19,12 @@ npm run dev        # executa src/index.ts com tsx
 npm run build      # compila para dist/, sem os testes
 npm start          # executa dist/index.js
 npm run typecheck  # checa os tipos, incluindo os testes
+npm run lint       # executa o Biome em src/
 npm test           # executa todos os testes (node:test)
 node --import tsx --test src/db/database.test.ts  # executa um único teste
 ```
 
-Não há linter configurado. O `dev` não usa modo watch de propósito: reiniciar a cada alteração derrubaria a conexão com o WhatsApp.
+O linter é o Biome, com o formatador desligado; ESLint com `typescript-eslint` não instala com o TypeScript 7. A regra `noFloatingPromises` é experimental e pode mudar entre versões do Biome. O `dev` não usa modo watch de propósito: reiniciar a cada alteração derrubaria a conexão com o WhatsApp.
 
 ## Estado atual
 
