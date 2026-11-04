@@ -9,14 +9,31 @@ Objetivos, requisitos, padrões de código e commits: @AGENTS.md
 - Não incluir o Claude Code como coautor nos commits: sem `Co-Authored-By` nem outra linha de atribuição. Esta regra prevalece sobre o padrão da ferramenta.
 - Não implementar nem investigar itens da seção "Implementação/investigação futura" do `AGENTS.md` sem pedido explícito.
 
+## Comandos
+
+```sh
+npm run dev        # executa src/index.ts com tsx
+npm run build      # compila para dist/, sem os testes
+npm start          # executa dist/index.js
+npm run typecheck  # checa os tipos, incluindo os testes
+npm test           # executa todos os testes (node:test)
+node --import tsx --test src/db/database.test.ts  # executa um único teste
+```
+
+Não há linter configurado. O `dev` não usa modo watch de propósito: reiniciar a cada alteração derrubaria a conexão com o WhatsApp.
+
 ## Estado atual
 
-O projeto ainda não tem código: não há `package.json` nem scripts de build/teste. O repositório é público, então nada sensível pode ser versionado. Ao criar o scaffold, documente aqui os comandos reais (build, lint, testes, teste único).
+O scaffold abre o banco e encerra. Ainda não há schema, conexão com o WhatsApp nem sincronização.
+
+O repositório é público, então nada sensível pode ser versionado. Banco de dados e autenticação ficam em `data/`, que está no `.gitignore`.
 
 ## Stack
 
-- Fixe a versão exata `7.0.0-rc14` da Baileys, sem `^`, pois é um release candidate. O pacote é publicado como `baileys` e `@whiskeysockets/baileys`; os guias importam do segundo.
-- A Baileys é ESM-only e exige Node.js >= 20, então o projeto precisa de `"type": "module"`.
+- Mantenha a versão exata `7.0.0-rc14` da Baileys, sem `^`, pois é um release candidate. O projeto usa o pacote `baileys`; os guias importam de `@whiskeysockets/baileys`, então ajuste os imports ao copiar exemplos.
+- O projeto é ESM (`"type": "module"`), como exige a Baileys, e os imports internos usam a extensão `.js`.
+- O projeto exige Node.js >= 22 por causa do `better-sqlite3`; a Baileys aceita >= 20.
+- O `pino` fica na major 9, a mesma da Baileys, para não instalar duas cópias.
 - A Baileys v7 removeu APIs da v6, como `makeInMemoryStore`, `printQRInTerminal` e `isJidUser`. Não use exemplos da v6; veja `docs-7.0.0-rc14/guides/migration/v7.md`.
 
 ## Consulta à documentação
